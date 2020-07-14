@@ -17,10 +17,20 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Tags - Hexo</title>
+  <title>about - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -42,7 +52,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -159,8 +169,12 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="text-center tagcloud">
-  <a href="/tags/Linux/" style="font-size: 15px; color: #bbe">Linux</a> <a href="/tags/cmd/" style="font-size: 15px; color: #bbe">cmd</a>
+<div class="page-content">
+  <pre><code class="hljs plain">韦亚龙</code></pre>
+
+<pre><code class="hljs angelscript">QQ:<span class="hljs-number">1024252745</span></code></pre>
+
+
 </div>
 
               </div>
@@ -252,7 +266,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Tag&nbsp;",
+        "about&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -266,6 +280,21 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
 
 
 

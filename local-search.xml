@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>关闭指定端口的进程</title>
+    <link href="/2020/07/14/%E5%85%B3%E9%97%AD%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/"/>
+    <url>/2020/07/14/%E5%85%B3%E9%97%AD%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关闭指定端口的进程"><a href="#关闭指定端口的进程" class="headerlink" title="关闭指定端口的进程"></a>关闭指定端口的进程</h1><h3 id="1-查找对应的端口占用的进程，找到占用端口对应的程序的PID号："><a href="#1-查找对应的端口占用的进程，找到占用端口对应的程序的PID号：" class="headerlink" title="1.查找对应的端口占用的进程，找到占用端口对应的程序的PID号："></a>1.查找对应的端口占用的进程，找到占用端口对应的程序的PID号：</h3><pre><code class="hljs 1c">netstat  -aon<span class="hljs-string">|findstr  "</span><span class="hljs-number">9001</span><span class="hljs-string">"</span></code></pre><h3 id="2-根据PID号找到对应的程序-，找到对应的程序名："><a href="#2-根据PID号找到对应的程序-，找到对应的程序名：" class="headerlink" title="2.根据PID号找到对应的程序 ，找到对应的程序名："></a>2.根据PID号找到对应的程序 ，找到对应的程序名：</h3><pre><code class="hljs 1c">tasklist<span class="hljs-string">|findstr "</span><span class="hljs-number">6676</span><span class="hljs-string">"</span></code></pre><h3 id="3-结束该进程"><a href="#3-结束该进程" class="headerlink" title="3.结束该进程"></a>3.结束该进程</h3><pre><code class="hljs jboss-cli">taskkill <span class="hljs-string">/f</span> <span class="hljs-string">/t</span> <span class="hljs-string">/im</span> java.exe</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>cmd</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux系统命令大全</title>
     <link href="/2020/07/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/"/>
     <url>/2020/07/14/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
