@@ -242,9 +242,9 @@
 <h2 id="光盘"><a href="#光盘" class="headerlink" title="光盘"></a><strong>光盘</strong></h2><p>cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容<br>mkisofs /dev/cdrom &gt; cd.iso 在磁盘上创建一个光盘的iso镜像文件<br>mkisofs /dev/cdrom | gzip &gt; cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件<br>mkisofs -J -allow-leading-dots -R -V “Label CD” -iso-level 4 -o ./cd.iso data_cd 创建一个目录的iso镜像文件<br>cdrecord -v dev=/dev/cdrom cd.iso 刻录一个ISO镜像文件<br>gzip -dc cd_iso.gz | cdrecord dev=/dev/cdrom - 刻录一个压缩了的ISO镜像文件<br>mount -o loop cd.iso /mnt/iso 挂载一个ISO镜像文件<br>cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中<br>cd-paranoia – “-3” 从一个CD光盘转录音轨到 wav 文件中（参数-3）<br>cdrecord –scanbus 扫描总线以识别scsi通道<br>dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD </p>
 <h2 id="网络-（以太网和WIFI无线）"><a href="#网络-（以太网和WIFI无线）" class="headerlink" title="网络 - （以太网和WIFI无线）"></a><strong>网络 - （以太网和WIFI无线</strong>）</h2><p>ifconfig eth0 显示一个以太网卡的配置<br>ifup eth0 启用一个 ‘eth0’ 网络设备<br>ifdown eth0 禁用一个 ‘eth0’ 网络设备<br>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址<br>ifconfig eth0 promisc 设置 ‘eth0’ 成混杂模式以嗅探数据包 (sniffing)<br>dhclient eth0 以dhcp模式启用 ‘eth0’<br>route -n show routing table<br>route add -net 0/0 gw IP_Gateway configura default gateway<br>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network ‘192.168.0.0/16’<br>route del 0/0 gw IP_gateway remove static route<br>echo “1” &gt; /proc/sys/net/ipv4/ip_forward activate ip routing<br>hostname show hostname of system<br>host <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>nslookup <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>ip link show show link status of all interfaces<br>mii-tool eth0 show link status of ‘eth0’<br>ethtool eth0 show statistics of network card ‘eth0’<br>netstat -tup show all active network connections and their PID<br>netstat -tupl show all network services listening on the system and their PID<br>tcpdump tcp port 80 show all HTTP traffic<br>iwlist scan show wireless networks<br>iwconfig eth1 show configuration of a wireless network card<br>hostname show hostname<br>host <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>nslookup <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>whois <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup on Whois database </p>
 <h2 id="JPS工具"><a href="#JPS工具" class="headerlink" title="JPS工具"></a><strong>JPS工具</strong></h2><p>jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。</p>
-<pre><code>我想很多人都是用过unix系统里的ps命令，这个命令主要是用来显示当前系统的进程情况，有哪些进程，及其 id。 jps 也是一样，它的作用是显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。
+<div class="hljs"><pre><code>我想很多人都是用过unix系统里的ps命令，这个命令主要是用来显示当前系统的进程情况，有哪些进程，及其 id。 jps 也是一样，它的作用是显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。
 
- **使用方法：在当前命令行下打 jps(需要JAVA_HOME，没有的话，到改程序的目录下打) 。**</code></pre><p><strong>jps存放在JAVA_HOME/bin/jps，使用时为了方便请将JAVA_HOME/bin/加入到Path.</strong></p>
+ **使用方法：在当前命令行下打 jps(需要JAVA_HOME，没有的话，到改程序的目录下打) 。**</code></pre></div><p><strong>jps存放在JAVA_HOME/bin/jps，使用时为了方便请将JAVA_HOME/bin/加入到Path.</strong></p>
 <p>$&gt; <strong>jps</strong><br>23991 Jps<br>23789 BossMain<br>23651 Resin</p>
 <p>比较常用的参数：</p>
 <p><strong>-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数</strong><br>$&gt;  <strong>jps -q</strong><br>28680<br>23789<br>23651</p>
@@ -307,6 +307,13 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+
+              </div>
             
           </div>
         </div>
@@ -454,8 +461,10 @@
   <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
-      placement: "right",
+      placement: "left",
       visible: "hover",
+      
+      icon: "§"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -500,6 +509,56 @@
 
 
 
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
 
 
 
@@ -508,6 +567,20 @@
 
 
 
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
