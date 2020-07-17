@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Docker安装mysql</title>
+    <link href="/2020/07/17/Docker%E5%AE%89%E8%A3%85mysql/"/>
+    <url>/2020/07/17/Docker%E5%AE%89%E8%A3%85mysql/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker安装mysql"><a href="#Docker安装mysql" class="headerlink" title="Docker安装mysql"></a>Docker安装mysql</h1><h3 id="默认安装最新版本的mysql-latest"><a href="#默认安装最新版本的mysql-latest" class="headerlink" title="默认安装最新版本的mysql  (latest)"></a>默认安装最新版本的mysql  (latest)</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">pull</span> <span class="hljs-selector-tag">mysql</span></code></pre></div><h3 id="安装指定版本的mysql"><a href="#安装指定版本的mysql" class="headerlink" title="安装指定版本的mysql"></a>安装指定版本的mysql</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">pull</span> <span class="hljs-selector-tag">mysql</span><span class="hljs-selector-pseudo">:8.0.20</span></code></pre></div><h3 id="安装mysql容器"><a href="#安装mysql容器" class="headerlink" title="安装mysql容器"></a>安装mysql容器</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">run</span> <span class="hljs-selector-tag">-p</span> 3306<span class="hljs-selector-pseudo">:3306</span> <span class="hljs-selector-tag">--name</span> <span class="hljs-selector-tag">mysql</span> \-v /mydata/mysql/log:/var/log/mysql \-v /mydata/mysql/data:/var/lib/mysql \-v /mydata/mysql/conf:/etc/mysql \-e MYSQL_ROOT_PASSWORD=root \<span class="hljs-selector-tag">-d</span> <span class="hljs-selector-tag">mysql</span><span class="hljs-selector-pseudo">:8.0.20</span></code></pre></div><h3 id="创建mysql配置文件"><a href="#创建mysql配置文件" class="headerlink" title="创建mysql配置文件"></a>创建mysql配置文件</h3><p>在<code>/mydata/mysql/conf</code>目录下创建文件<code>my.cnf</code></p><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-attr">[client]</span>default-character-set=utf8mb4<span class="hljs-selector-attr">[mysql]</span>default-character-set=utf8mb4<span class="hljs-selector-attr">[mysqld]</span>init_connect='SET collation_connection = utf8_unicode_ci'init_connect='SET NAMES utf8'character-set-server=utf8collation-server=utf8_unicode_ci<span class="hljs-selector-tag">skip-character-set-client-handshake</span><span class="hljs-selector-tag">skip-name-resolve</span>secure_file_priv=/var/lib/mysql <span class="hljs-selector-tag">skip-grant-tables</span>    #可以跳过登录<span class="hljs-selector-tag">mysql</span></code></pre></div><h3 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">restart</span> <span class="hljs-selector-tag">mysql</span></code></pre></div><h3 id="进入mysql容器-linux系统"><a href="#进入mysql容器-linux系统" class="headerlink" title="进入mysql容器(linux系统)"></a>进入mysql容器(linux系统)</h3><div class="hljs"><pre><code class="hljs css">docker exec -it mysql /bin/bash</code></pre></div><h3 id="查看是否成功修改"><a href="#查看是否成功修改" class="headerlink" title="查看是否成功修改"></a>查看是否成功修改</h3><div class="hljs"><pre><code class="hljs css">cat /etc/mysql/my.cnf</code></pre></div><h3 id="设置mysql随着docker自启"><a href="#设置mysql随着docker自启" class="headerlink" title="设置mysql随着docker自启"></a>设置mysql随着docker自启</h3><div class="hljs"><pre><code class="hljs css">docker update mysql --restart=alwaysdocker update redis --restart=always</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git-ssh配置</title>
     <link href="/2020/07/16/Git-ssh%E9%85%8D%E7%BD%AE/"/>
     <url>/2020/07/16/Git-ssh%E9%85%8D%E7%BD%AE/</url>
