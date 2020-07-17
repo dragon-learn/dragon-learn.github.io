@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Docker配置阿里云镜像</title>
+    <link href="/2020/07/17/Docker%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F/"/>
+    <url>/2020/07/17/Docker%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Docker安装mysql</title>
     <link href="/2020/07/17/Docker%E5%AE%89%E8%A3%85mysql/"/>
     <url>/2020/07/17/Docker%E5%AE%89%E8%A3%85mysql/</url>
@@ -35,6 +60,12 @@
     
     <content type="html"><![CDATA[<h1 id="Git-ssh配置"><a href="#Git-ssh配置" class="headerlink" title="Git-ssh配置"></a>Git-ssh配置</h1>]]></content>
     
+    
+    <categories>
+      
+      <category>Git</category>
+      
+    </categories>
     
     
     <tags>
