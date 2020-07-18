@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>java项目实例(一)</title>
+    <link href="/2020/07/18/java%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B-%E4%B8%80/"/>
+    <url>/2020/07/18/java%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B-%E4%B8%80/</url>
+    
+    <content type="html"><![CDATA[<h1 id="项目文件配置"><a href="#项目文件配置" class="headerlink" title="项目文件配置"></a>项目文件配置</h1><h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><p>在<code>conf/setting.xml</code>配置</p><h3 id="配置阿里云镜像"><a href="#配置阿里云镜像" class="headerlink" title="配置阿里云镜像"></a>配置阿里云镜像</h3><div class="hljs"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">mirror</span>&gt;  &lt;id&gt;alimaven&lt;/id&gt;  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;  &lt;name&gt;aliyun maven&lt;/name&gt;  &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;  &lt;/mirror&gt;Copy</code></pre></div><h3 id="配置jdk编译"><a href="#配置jdk编译" class="headerlink" title="配置jdk编译"></a>配置jdk编译</h3><div class="hljs"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">profile</span>&gt;  &lt;id&gt;jdk-1.8&lt;/id&gt;  &lt;<span class="hljs-selector-tag">activation</span>&gt;&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;&lt;jdk&gt;1.8&lt;/jdk&gt;  &lt;/activation&gt;  &lt;<span class="hljs-selector-tag">properties</span>&gt;&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;&lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;  &lt;/properties&gt;&lt;/profile&gt;Copy</code></pre></div><h2 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h2><h3 id="Setting配置Maven"><a href="#Setting配置Maven" class="headerlink" title="Setting配置Maven"></a>Setting配置Maven</h3><h3 id="在Plugins中安装插件"><a href="#在Plugins中安装插件" class="headerlink" title="在Plugins中安装插件"></a>在Plugins中安装插件</h3><ol><li>lombok</li><li>mybatisx</li></ol><h2 id="Vscode"><a href="#Vscode" class="headerlink" title="Vscode"></a>Vscode</h2><h3 id="安装插件-方便开发"><a href="#安装插件-方便开发" class="headerlink" title="安装插件(方便开发)"></a>安装插件(方便开发)</h3><ol><li>Auto Close Tag</li><li>Auto Rename Tag</li><li>Chinese</li><li>ESLint</li><li>HTML CSS Support</li><li>HTML Snippets</li><li>JavaScript (ES6) code snippets</li><li>Live Server</li><li>open in browser</li><li>Vetur</li></ol><h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p>右键打开<code>git bash here</code></p><h3 id="配置基本信息"><a href="#配置基本信息" class="headerlink" title="配置基本信息"></a>配置基本信息</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">git</span> <span class="hljs-selector-tag">config</span> <span class="hljs-selector-tag">--global</span> <span class="hljs-selector-tag">user</span><span class="hljs-selector-class">.name</span> "名字"<span class="hljs-selector-tag">git</span> <span class="hljs-selector-tag">config</span> <span class="hljs-selector-tag">--global</span> <span class="hljs-selector-tag">user</span><span class="hljs-selector-class">.email</span> "邮箱"<span class="hljs-selector-tag">Copy</span></code></pre></div><h3 id="创建秘钥"><a href="#创建秘钥" class="headerlink" title="创建秘钥"></a>创建秘钥</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">ssh-keygen</span> <span class="hljs-selector-tag">-t</span> <span class="hljs-selector-tag">rsa</span> <span class="hljs-selector-tag">-C</span> "邮箱"<span class="hljs-selector-tag">Copy</span></code></pre></div><h1 id="创建项目微服务"><a href="#创建项目微服务" class="headerlink" title="创建项目微服务"></a>创建项目微服务</h1><p>新建一个<code>Module</code> 选择<code>Spring Initializr</code></p><p>商品服务,仓储服务,订单服务,优惠券服务,用户服务</p><p>共同:</p><ol><li>需要有web,springrouting/openfeign</li><li>每一个服务包名<strong>com.atguigu.gulimall</strong>.xxx(product/order/ware/coupon/member)</li><li>模块名 : <strong>gulimall</strong>-xxx</li></ol><h2 id="根目录创建pom-xml"><a href="#根目录创建pom-xml" class="headerlink" title="根目录创建pom.xml"></a>根目录创建pom.xml</h2><p>输入以下内容聚合所有服务</p><div class="hljs"><pre><code class="hljs css">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;    &lt;groupId&gt;com.atguigu.gulimall&lt;/groupId&gt;    &lt;artifactId&gt;gulimall&lt;/artifactId&gt;    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;    &lt;name&gt;gulimall&lt;/name&gt;    &lt;description&gt;聚合服务&lt;/description&gt;    &lt;packaging&gt;pom&lt;/packaging&gt;    &lt;<span class="hljs-selector-tag">modules</span>&gt;        &lt;module&gt;gulimall-coupon&lt;/module&gt;        &lt;module&gt;gulimall-member&lt;/module&gt;        &lt;module&gt;gulimall-order&lt;/module&gt;        &lt;module&gt;gulimall-ware&lt;/module&gt;        &lt;module&gt;gulimall-product&lt;/module&gt;    &lt;/modules&gt;&lt;/project&gt;Copy</code></pre></div><p>可以使用service中的<code>springboot</code>操作</p><h2 id="maven中添加新建的pom-xml"><a href="#maven中添加新建的pom-xml" class="headerlink" title="maven中添加新建的pom.xml"></a>maven中添加新建的pom.xml</h2><p>为了一起编译操作</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+      <category>项目开发案例</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NODEJS版本控制和切换</title>
     <link href="/2020/07/18/NODEJS%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%92%8C%E5%88%87%E6%8D%A2/"/>
     <url>/2020/07/18/NODEJS%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%92%8C%E5%88%87%E6%8D%A2/</url>
@@ -13,7 +40,7 @@
     
     <categories>
       
-      <category>Node</category>
+      <category>NodeJS</category>
       
     </categories>
     
