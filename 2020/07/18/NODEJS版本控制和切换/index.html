@@ -17,10 +17,20 @@
   <meta name="description" content="">
   <meta name="author" content="Dragon">
   <meta name="keywords" content="">
-  <title>标签 - Dragon</title>
+  <title>NODEJS版本控制和切换 - Dragon</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -42,7 +52,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -140,6 +150,48 @@
             </span>
 
             
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-18 16:38">
+      2020年7月18日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      452 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
           </div>
 
           
@@ -150,24 +202,104 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h1 id="NODEJS版本控制和切换"><a href="#NODEJS版本控制和切换" class="headerlink" title="NODEJS版本控制和切换"></a>NODEJS版本控制和切换</h1><p>nvm是node.js的版本管理器，可以安装和切换不同版本node.js</p>
+<h3 id="第一步：下载"><a href="#第一步：下载" class="headerlink" title="第一步：下载"></a>第一步：下载</h3><p>下载地址：<a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases</a></p>
+<h3 id="第二步：安装"><a href="#第二步：安装" class="headerlink" title="第二步：安装"></a>第二步：安装</h3><p>按照提示完成安装即可，安装完成后可以检测一下是否安装成功</p>
+<p>在cmd命令行输入nvm,如果出现nvm版本号和一系列帮助指令，则说明nvm安装成功。</p>
+<h3 id="第三步：修改settings-txt"><a href="#第三步：修改settings-txt" class="headerlink" title="第三步：修改settings.txt"></a>第三步：修改settings.txt</h3><p>在你安装的目录下找到settings.txt文件，打开后加上<br>node_mirror: <a href="https://npm.taobao.org/mirrors/node/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node/</a><br>npm_mirror: <a href="https://npm.taobao.org/mirrors/npm/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/npm/</a></p>
+<p>这一步主要是将npm镜像改为淘宝的镜像，可以提高下载速度。</p>
+<h3 id="第四步：node-js-安装"><a href="#第四步：node-js-安装" class="headerlink" title="第四步：node.js 安装"></a>第四步：node.js 安装</h3><p>可以先使用 nvm list 查看本地已安装的版本</p>
+<p>然后使用 nvm list available 查看所有版本</p>
+<p>NVM常用命令<br>nvm list 查看已经安装的版本<br>nvm list installed 查看已经安装的版本<br>nvm list available 查看网络可以安装的版本<br>nvm version 查看当前的版本<br>nvm install 安装最新版本nvm<br>nvm use <version> ## 切换使用指定的版本node<br>nvm ls 列出所有版本<br>nvm current显示当前版本<br>nvm alias <name> <version> ## 给不同的版本号添加别名<br>nvm unalias <name> ## 删除已定义的别名<br>nvm reinstall-packages <version> ## 在当前版本node环境下，重新全局安装指定版本号的npm包<br>nvm on 打开nodejs控制<br>nvm off 关闭nodejs控制<br>nvm proxy 查看设置与代理<br>nvm node_mirror [url] 设置或者查看setting.txt中的node_mirror，如果不设置的默认是 <a href="https://nodejs.org/dist/" target="_blank" rel="noopener">https://nodejs.org/dist/</a><br>nvm npm_mirror [url] 设置或者查看setting.txt中的npm_mirror,如果不设置的话默认的是： <a href="https://github.com/npm/npm/archive/" target="_blank" rel="noopener">https://github.com/npm/npm/archive/</a>.<br>nvm uninstall <version> 卸载制定的版本<br>nvm use [version] [arch] 切换制定的node版本和位数<br>nvm root [path] 设置和查看root路径</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Node/">Node</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Node/">Node</a>
+                    
+                      <a class="hover-with-bg" href="/tags/nvm/">nvm</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/18/NPM%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F/">
+                        <span class="hidden-mobile">NPM配置阿里云镜像</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
                 
 
-<div class="text-center tagcloud">
-  <a href="/tags/Docker/" style="font-size: 40px; color: #337ab7">Docker</a> <a href="/tags/Git/" style="font-size: 25px; color: #bbe">Git</a> <a href="/tags/Linux/" style="font-size: 32.5px; color: #779bd3">Linux</a> <a href="/tags/NPM/" style="font-size: 25px; color: #bbe">NPM</a> <a href="/tags/Node/" style="font-size: 25px; color: #bbe">Node</a> <a href="/tags/SpringBoot/" style="font-size: 25px; color: #bbe">SpringBoot</a> <a href="/tags/cmd/" style="font-size: 25px; color: #bbe">cmd</a> <a href="/tags/nvm/" style="font-size: 25px; color: #bbe">nvm</a>
-</div>
-
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -265,6 +397,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -272,7 +429,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签&nbsp;",
+        "NODEJS版本控制和切换&nbsp;",
       ],
       cursorChar: "☼",
       typeSpeed: 70,
@@ -287,6 +444,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -300,6 +474,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
