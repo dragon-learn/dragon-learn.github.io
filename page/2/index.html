@@ -175,13 +175,12 @@
         
           
         
-        <div>关闭指定端口的进程1.查找对应的端口占用的进程，找到占用端口对应的程序的PID号：netstat  -aon|findstr  "9001"
+        <div>关闭指定端口的进程1.查找对应的端口占用的进程，找到占用端口对应的程序的PID号：netstat  -aon|findstr  "9001" (windows)
+yum install net-tools 安装工具
+netstat -tunlp|grep 8090 查找指定端口pid (centos7)
+netstat -ant 查找全部端口使用情况 (centos7)
 
-2.根据PID号找到对应的程序 ，找到对应的程序名：tasklist|findstr "6676"
-
-3.结束该进程taskkill /f /t /im java.exe
-
-</div>
+2.根据PID号找到对应</div>
       </a>
 
       <div class="index-btm post-metas">
