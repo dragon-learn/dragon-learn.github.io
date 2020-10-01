@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>SpringBoot发送邮件</title>
+    <link href="/2020/10/01/SpringBoot%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/"/>
+    <url>/2020/10/01/SpringBoot%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>按照之前写的文章 <a href="https://blog.csdn.net/weixin_38575051/article/details/92832932" target="_blank" rel="noopener">SpringBoot 中实现邮件发送功能</a> ，实现邮件发送功能后，在本地开发环境测试，邮件能够正常发送。但部署到阿里云 ECS 服务器以后，一直没有收到邮件。</p><p>一开始怀疑是条件判断有问题，后来添加 log 后发现，条件状态判断正常。再查看打印的相关 log，发现是在邮件发送时出现了异常。</p><h3 id="问题报错"><a href="#问题报错" class="headerlink" title="问题报错"></a>问题报错</h3><p>使用 SpringBoot 的邮件发送组件功能，发送邮件时，本地能够发送成功，但部署到阿里云 ECS 服务器后，却发送失败，部分关键 log 信息如下，</p><div class="hljs"><pre><code class="hljs reasonml">org.springframework.mail.MailSendException: Mail server connection failed; nested <span class="hljs-keyword">exception</span> is com.sun.mail.util.MailConnectException: Couldn't connect <span class="hljs-keyword">to</span> host, port: smtp.<span class="hljs-number">163.</span>com, <span class="hljs-number">25</span>; timeout -<span class="hljs-number">1</span>;  nested <span class="hljs-keyword">exception</span> is:        java.net.ConnectException: 连接超时 (Connection timed out). Failed messages: com.sun.mail.util.MailConnectException: Couldn't connect <span class="hljs-keyword">to</span> host, port: smtp.<span class="hljs-number">163.</span>com, <span class="hljs-number">25</span>; timeout -<span class="hljs-number">1</span>;  nested <span class="hljs-keyword">exception</span> is:        java.net.ConnectException: 连接超时 (Connection timed out)        at org.springframework.mail.javamail.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JavaMailSenderImpl</span>.</span></span><span class="hljs-keyword">do</span><span class="hljs-constructor">Send(JavaMailSenderImpl.<span class="hljs-params">java</span>:447)</span>        at org.springframework.mail.javamail.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JavaMailSenderImpl</span>.</span></span>send(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JavaMailSenderImpl</span>.</span></span>java:<span class="hljs-number">322</span>)        at org.springframework.mail.javamail.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JavaMailSenderImpl</span>.</span></span>send(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JavaMailSenderImpl</span>.</span></span>java:<span class="hljs-number">311</span>)<span class="hljs-number">12345678</span></code></pre></div><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>从现有情况看，跟程序运行环境有关。查看相关资料，发现在阿里云 ECS 服务器上，默认禁用了 25 端口，所以在通过 25 端口去连接邮件服务器时，无法连上，就报超时了。</p><p>官方建议使用 465 端口，而 456 端口是 SSL 协议的，所以不仅要换端口，还需要进行 SSL 协议替换。下面是在 application.properties 进行的邮件发送相关配置，</p><div class="hljs"><pre><code class="hljs routeros"><span class="hljs-comment"># JavaMailSender Config</span>spring.mail.<span class="hljs-attribute">host</span>=smtp.163.comspring.mail.<span class="hljs-attribute">username</span>=xxx@163.com #你的163邮箱地址spring.mail.<span class="hljs-attribute">password</span>=xxx #你的163邮箱授权密码spring.mail.properties.mail.smtp.<span class="hljs-attribute">auth</span>=<span class="hljs-literal">true</span>spring.mail.properties.mail.smtp.starttls.<span class="hljs-attribute">enable</span>=<span class="hljs-literal">true</span>spring.mail.properties.mail.smtp.starttls.<span class="hljs-attribute">required</span>=<span class="hljs-literal">true</span><span class="hljs-comment"># SSL Config</span>spring.mail.<span class="hljs-attribute">port</span>=465spring.mail.<span class="hljs-attribute">protocol</span>=smtpspring.mail.<span class="hljs-attribute">default-encoding</span>=UTF-8spring.mail.properties.mail.smtp.ssl.<span class="hljs-attribute">enable</span>=<span class="hljs-literal">true</span>spring.mail.properties.mail.smtp.socketFactory.<span class="hljs-attribute">port</span>=465spring.mail.properties.mail.smtp.socketFactory.<span class="hljs-attribute">class</span>=javax.net.ssl.SSLSocketFactory123456789101112131415</code></pre></div><p>经过上面这样配置后，在阿里 ECS 上就能够正常发送邮件了。</p><h3 id="服务器端口协议"><a href="#服务器端口协议" class="headerlink" title="服务器端口协议"></a>服务器端口协议</h3><p>163 邮箱相关服务器信息如下，</p><table><thead><tr><th>服务器名称</th><th>服务器地址</th><th>SSL 协议端口</th><th>非 SSL 协议端口</th></tr></thead><tbody><tr><td>SMTP</td><td><a href="http://smtp.163.com/" target="_blank" rel="noopener">smtp.163.com</a></td><td>465/994</td><td>25</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>SprintBoot</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mail</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SpringBoot中的定时任务与Quartz的整合</title>
     <link href="/2020/09/29/SpringBoot%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8EQuartz%E7%9A%84%E6%95%B4%E5%90%88/"/>
     <url>/2020/09/29/SpringBoot%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8EQuartz%E7%9A%84%E6%95%B4%E5%90%88/</url>
